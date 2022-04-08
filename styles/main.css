@@ -1,0 +1,89 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background-image: url('https://www.thechairmansbao.com/wp-content/uploads/2021/08/Chinese-Valentines-Day-2021.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+
+header{
+  text-align: center;
+  margin-top: 20px;
+  
+}
+.grid-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#grid {
+  align-items: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  justify-content: center;
+  height: 600px;
+  width: 600px;
+}
+#grid div {
+  border: 1px solid lightgrey;
+  flex-grow: 1;
+  height: 10%;
+  width: 10%;
+}
+#grid div.niulang {
+  background-image: url('https://img95.699pic.com/element/40037/4537.png_860.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  
+}
+.monster {
+  background-image: url('https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/0292a872-03b4-4cd5-8d99-0e9337123e71/d53t7uu-f8c3fa7a-5b8e-4127-9142-8d2e6f374eaf.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzAyOTJhODcyLTAzYjQtNGNkNS04ZDk5LTBlOTMzNzEyM2U3MVwvZDUzdDd1dS1mOGMzZmE3YS01YjhlLTQxMjctOTE0Mi04ZDJlNmYzNzRlYWYuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.DlMFun_kqSsh9LbfGqFw73PrVmj5RW_6O4L5G3eOHKI');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+ 
+
+}
+.road{
+  /* background-image: url('https://media1.giphy.com/media/vbGLQXbaOoi2WXBNaF/giphy.gif'); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  
+}
+.road2{
+  /* background-image: url('https://media1.giphy.com/media/vbGLQXbaOoi2WXBNaF/giphy.gif'); */
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+ 
+}
+.snake{
+  background-image: url('https://giffiles.alphacoders.com/297/2977.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+  
+}
+.monster2{
+  background-image: url('https://media0.giphy.com/media/dZcMs4BOvrlKe7mTZ3/giphy.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+
+}
+
+.finishLine{
+
+
+}
+
