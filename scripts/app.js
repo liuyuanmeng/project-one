@@ -3,11 +3,12 @@ function init() {
   
   
   const grid = document.querySelector('#grid')
-  const lives =document.querySelector('#lives')
-  // console.log(lives)
-  const button = document.querySelector('#start-pause')
-  // console.log(button)
-  let livesRemaining = 3
+  
+  const startButton = document.querySelector('#start')
+  let timerId
+  let secondTimerId
+  let thirdTimerId
+  let outcomeTimerId
   
   // Grid cretion
   const width = 10
@@ -15,12 +16,6 @@ function init() {
   const cellCount = width * height
   const cells = []
  
-  
-  
-  
-  
-
-
   function createGrid(){
     for (let i = 0; i < cellCount; i++){
       const cell = document.createElement('div')
@@ -29,18 +24,18 @@ function init() {
       cells.push(cell)
 
     }
-    addNiulang(startPosition)
+    addFrog(startPosition)
   }
   //  Character setup
-  const niulangClass = 'niulang' 
+  const frogClass = 'frog' 
   const startPosition = 75   
   let currentPosition = startPosition 
   // Executions
-  function addNiulang(position){
-    cells[position].classList.add(niulangClass)
+  function addFrog(position){
+    cells[position].classList.add(frogClass)
   }
-  function removeNiulang(position){
-    cells[position].classList.remove(niulangClass)
+  function removeFrog(position){
+    cells[position].classList.remove(frogClass)
   }
 
   // Movement function
@@ -50,29 +45,29 @@ function init() {
     const right = 39
     const up = 38
     const down = 40
-    // Remove cat whilst currentPosition matches the old cat position
-    removeNiulang(currentPosition)
+    // Remove frog whilst currentPosition matches the old frog position
+    removeFrog(currentPosition)
 
 
-    console.log(currentPosition % width)
+    // console.log(currentPosition % width)
     if (key === left && currentPosition % width !== 0){
-      console.log('MOVED LEFT')
+      // console.log('MOVED LEFT')
       currentPosition-- // decrement currentPosition by 1 to move character left
     } else if (key === right && currentPosition % width !== width - 1){
-      console.log('MOVED RIGHT')
+      // console.log('MOVED RIGHT')
       currentPosition++ // increment the currentPosition by 1 to move character right
     } else if (key === up && currentPosition >= width){
-      console.log('MOVED UP')
+      // console.log('MOVED UP')
       currentPosition -= width
     } else if (key === down && currentPosition + width < cellCount){
-      console.log('MOVED DOWN')
+      // console.log('MOVED DOWN')
       currentPosition += width
     } else {
-      console.log('INVALID KEY')
+      // console.log('INVALID KEY')
     }
 
-    // Add cat to new position
-    addNiulang(currentPosition)
+    // Add frog to new position
+    addFrog(currentPosition)
     
 
   }
@@ -80,7 +75,7 @@ function init() {
   
 
   // Events
-  document.addEventListener('keydown', handleKeyDown)
+  // document.addEventListener('keyup', handleKeyDown)
   //  start and pause button addEventListener as We want to know the frog shouldbe move or not.
 
 
@@ -88,135 +83,170 @@ function init() {
  
   createGrid()
 
-  // monster and addclasslist
-  // 
 
-  for (let i = 50; i < 60; i++) {
-    if (i === 51 || i === 55 || i === 58){
-      cells[i].classList.add('monster')
-    } else if (i === 52 || i === 53 || i === 56 || i === 59) {
-      cells[i].classList.add('road')
-    } else {
-      cells[i].classList.add('road2')
-    }
-      
+  // creat mario
+  cells[10].classList.add('mario')
+
+  for (let i = 11; i < 20; i++) {
+    cells[i].classList.add('road')
   }
-  // function autoMoveElements(){
-
-  // } 
-  function moveMonster(){
-    for (let i = 50; i < 60; i++) {
-      if (cells[i].classList.contains('monster')){
-        cells[i].classList.remove('monster')
-        cells[i].classList.add('road2')
-      } else if (cells[i].classList.contains('road2')){
-        cells[i].classList.remove('road2')
-        cells[i].classList.add('road')
-
-      } else if (cells[i].classList.contains('road')){
-        cells[i].classList.remove('road')
-        cells[i].classList.add('monster')
-
-      }
-
-    }
-
-    
+  function findMario() {
+    return cells.slice(10,20).filter(cell => cell.classList.contains('mario'))
   }
 
-  setInterval(moveMonster, 1000)
+  function replaceMario(){
+    const fromMario = findMario() 
+    const goMarioIndex = fromMario.map(cell => Number(cell.id) < 19 ? Number(cell.id) + 1 : 10)
+    console.log(goMarioIndex)
+    fromMario.forEach(cell => cell.classList.remove('mario'))
+    fromMario.forEach(cell => cell.classList.add('road'))
+    goMarioIndex.forEach(id => cells[id].classList.remove('road'))
+    goMarioIndex.forEach(id => cells[id].classList.add('mario'))
+  }
+  //creat mario2
 
-  // addclasslist for SNAKE that move to the right
+  cells[61].classList.add('mario2')
+  cells[65].classList.add('mario2')
+  cells[68].classList.add('mario2')
+
+  for (let i = 60; i < 70; i++) {
+    cells[i].classList.add('road')
+  }
+  function findMario2 () {
+    return cells.slice(60,70).filter(cell => cell.classList.contains('mario2'))
+  }
+  function replaceMario2() {
+
+    const fromMario = findMario2()
+    const goMarioIndex = fromMario.map(cell => Number(cell.id) < 69 ? Number(cell.id) + 1 : 60) 
+    console.log(goMarioIndex)
+    fromMario.forEach(cell => cell.classList.remove('mario2'))
+    fromMario.forEach(cell => cell.classList.add('road'))
+    goMarioIndex.forEach(id => cells[id].classList.remove('road'))
+    goMarioIndex.forEach(id => cells[id].classList.add('mario2'))
+  }
+
+  // creat mario3
+  cells[31].classList.add('mario3')
+  cells[35].classList.add('mario3')
+  cells[38].classList.add('mario3')
+
   for (let i = 30; i < 40; i++) {
-    if (i % 2 === 0){
-      cells[i].classList.add('snake')
-    }  else {
-      cells[i].classList.add('road')
-    }
-      
+    cells[i].classList.add('road')
+  }
+  function findMario3 () {
+    return cells.slice(30,40).filter(cell => cell.classList.contains('mario3'))
+  }
+  function replaceMario3() {
+    const fromMario = findMario3()
+    const goMarioIndex = fromMario.map(cell => Number(cell.id) > 30 ? Number(cell.id) - 1 : 39)
+    console.log(goMarioIndex)
+    fromMario.forEach(cell => cell.classList.remove('mario3'))
+    fromMario.forEach(cell => cell.classList.add('road'))
+    goMarioIndex.forEach(id => cells[id].classList.remove('road'))
+    goMarioIndex.forEach(id => cells[id].classList.add('mario3'))
+
   }
 
-  function moveSnake(){
-    for (let i = 30; i < 40; i++) {
-      if (cells[i].classList.contains('road')){
-        cells[i].classList.remove('road')
-        cells[i].classList.add('snake')
-      } else if (cells[i].classList.contains('snake')){
-        cells[i].classList.remove('snake')
-        cells[i].classList.add('road')
-
-      } 
-
-    }
-
-    
-  }
-  setInterval(moveSnake, 500)
-
-//  addmonster2
-  for (let i = 20; i < 30; i++) {
-    if (i % 2 !== 0){
-      cells[i].classList.add('monster2')
-    }  else {
-      cells[i].classList.add('road')
-    }
-      
-  }
-  function moveMonster2Left(){
-    for (let i = 20; i < 30; i++) {
-      if (cells[i].classList.contains('road')){
-        cells[i].classList.remove('road')
-        cells[i].classList.add('monster2')
-      } else if (cells[i].classList.contains('monster2')){
-        cells[i].classList.remove('monster2')
-        cells[i].classList.add('road')
-
-      } 
-
-    }
-
-    
-  }
-  setInterval(moveMonster2Left, 200)
-
-  // lose function
-
-  // function lose() {
-  //   for (let i = 0; i < 80; i++){
-  //     if (
-  //       (cells[i].classList.contains('monster') || cells[i].classList.contains('snake') || cells[i].classList.contains('monster2')) 
-  //     && cells[i].classList.contains('niuland')) 
-  //       livesRemaining <= 0 
-      
-  //     window.alert('You dead')
-  //     document.removeEventListener('keydown')
-
-  //   }
-  // }
-
-  // lose()
-
-  // for (let i = 0; i < 10; i++) {
-  //   cells[i].classList.add('finishLine')
-
-  // }
   
 
-  // function win() {
-  //   for (let i = 0; i < 80; i++) {
-  //     if (cells[i].classList.contains('finishLine')){
+  function loseLife() {
+    console.log(cells[currentPosition])
+    if (cells[currentPosition].classList.contains('frog') && (cells[currentPosition].classList.contains('mario') || cells[currentPosition].classList.contains('mario2') || cells[currentPosition].classList.contains('mario3')) ) {
       
-  //       window.alert('You Win')
-  //       document.removeEventListener('keydown')
+      
+      
+      removeFrog(currentPosition)
+      currentPosition = startPosition
+      addFrog(startPosition)
+      window.alert('Game Over')
 
-  //     }
-  //   }
+    }
+
+  }
+
+  for (let i = 0; i < 10; i++) {
+    cells[i].classList.add('finishLine')
+
+  }
+  function win() {
+    for (let i = 0; i < 10; i++) {
+      if (cells[currentPosition].classList.contains('finishLine')  && cells[currentPosition].classList.contains('frog')) {
+        removeFrog(currentPosition)
+        currentPosition = startPosition
+        addFrog(startPosition)
+        window.alert('You Win')
+        
+      }
+    }
+
+  }
+
+  function outComes() { 
+    win()
+    loseLife()
+
+
+  }
+  // function moveAll() {
+  //   setInterval(replaceMario2, 1000)
+  //   setInterval(replaceMario, 100)
+  
   // }
+  startButton.addEventListener('click',  () => {
+    if (timerId) {
+      clearInterval(timerId)
+      clearInterval(secondTimerId)
+      clearInterval(thirdTimerId)
+      clearInterval(outcomeTimerId)
+      timerId = null
+      secondTimerId = null
+      thirdTimerId = null
+      outcomeTimerId = null
+      document.removeEventListener('keyup', handleKeyDown)
+    } else {
+      timerId = setInterval(replaceMario2, 1000)
+      secondTimerId = setInterval(replaceMario, 200)
+      thirdTimerId = setInterval(replaceMario3,500)
+      outcomeTimerId = setInterval(outComes, 100)
+      document.addEventListener('keyup', handleKeyDown)
+
+    }
+  })
 
   
+
+  
+  
+ 
+
+  
+ 
+  
+  
+
 
 
 }
+
+window.addEventListener('DOMContentLoaded', init)
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+  
+
+
+
 
 
   
@@ -231,4 +261,4 @@ function init() {
  
 
 
-window.addEventListener('DOMContentLoaded', init)
+
