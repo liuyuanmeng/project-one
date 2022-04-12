@@ -1,14 +1,18 @@
 function init() {
   // Elements
-  
-  
   const grid = document.querySelector('#grid')
-  
   const startButton = document.querySelector('#start')
+  const audio = document.querySelector('#backgroundSong')
+  //  const livesDisplay = document.querySelector('#lives-display')
+ 
+  const winSound = document.querySelector('#win')
+  const gameOver = document.querySelector('#gameOver')
+  
   let timerId
   let secondTimerId
   let thirdTimerId
   let outcomeTimerId
+  //  let livesRemaining = 6 
   
   // Grid cretion
   const width = 10
@@ -26,9 +30,6 @@ function init() {
     }
     addFrog(startPosition)
   }
-
- 
-
   //  Character setup
   const frogClass = 'frog' 
   const startPosition = 75   
@@ -53,18 +54,18 @@ function init() {
     removeFrog(currentPosition)
 
 
-    // console.log(currentPosition % width)
+   
     if (key === left && currentPosition % width !== 0 && !(cells[currentPosition - 1].classList.contains('obstacles')) ){
-      //console.log('MOVED LEFT')
-      currentPosition-- // decrement currentPosition by 1 to move character left
+    
+      currentPosition--
     } else if (key === right && currentPosition % width !== width - 1 && !(cells[currentPosition + 1].classList.contains('obstacles'))){
-      // console.log('MOVED RIGHT')
-      currentPosition++ // increment the currentPosition by 1 to move character right
+    
+      currentPosition++ 
     } else if (key === up && currentPosition >= width && !(cells[currentPosition - width].classList.contains('obstacles'))){
-      // console.log('MOVED UP')
+      
       currentPosition -= width
     } else if (key === down && currentPosition + width < cellCount && !(cells[currentPosition + width].classList.contains('obstacles'))){
-      // console.log('MOVED DOWN')
+    
       currentPosition += width
     } else {
       // console.log('INVALID KEY')
@@ -76,16 +77,14 @@ function init() {
 
   }
  
+  // Initial setup
+  createGrid()
+
+  //all sounds effect 
+
+  
   
 
-  // Events
-  // document.addEventListener('keyup', handleKeyDown)
-  //  start and pause button addEventListener as We want to know the frog shouldbe move or not.
-
-
-  // Initial setup
- 
-  createGrid()
 
   // obstacles  setup
   cells[40].classList.add('obstacles')
@@ -95,10 +94,18 @@ function init() {
   cells[22].classList.add('obstacles')
   cells[27].classList.add('obstacles')
 
+  // water setup
+  cells[20].classList.add('water')
+  cells[21].classList.add('water')
+  cells[28].classList.add('water')
+  cells[29].classList.add('water')
+  cells[52].classList.add('water')
+  cells[53].classList.add('water')
+  cells[57].classList.add('water')
+  cells[58].classList.add('water')
 
 
-
-
+  
 
   // creat mario
   cells[10].classList.add('mario')
@@ -121,6 +128,7 @@ function init() {
   }
   //creat mario2
 
+
   cells[61].classList.add('mario2')
   cells[65].classList.add('mario2')
   cells[68].classList.add('mario2')
@@ -135,7 +143,6 @@ function init() {
 
     const fromMario = findMario2()
     const goMarioIndex = fromMario.map(cell => Number(cell.id) < 69 ? Number(cell.id) + 1 : 60) 
-    console.log(goMarioIndex)
     fromMario.forEach(cell => cell.classList.remove('mario2'))
     fromMario.forEach(cell => cell.classList.add('road'))
     goMarioIndex.forEach(id => cells[id].classList.remove('road'))
@@ -168,15 +175,23 @@ function init() {
 
   function loseLife() {
     console.log(cells[currentPosition])
-    if (cells[currentPosition].classList.contains('frog') && (cells[currentPosition].classList.contains('mario') || cells[currentPosition].classList.contains('mario2') || cells[currentPosition].classList.contains('mario3')) ) {
+    if (cells[currentPosition].classList.contains('frog') && (cells[currentPosition].classList.contains('mario') || cells[currentPosition].classList.contains('mario2') || cells[currentPosition].classList.contains('mario3') || cells[currentPosition].classList.contains('water')) ) {
       
       
       
       removeFrog(currentPosition)
       currentPosition = startPosition
       addFrog(startPosition)
+       
+      //  livesRemaining-- 
+      // livesDisplay.innerHTML = livesRemaining
+      //should stop the music when frog hit mario 
+      audio.pause()
+      gameOver.play()
       window.alert('Game Over')
-
+      clearInterval(timerId)
+      clearInterval(secondTimerId)
+      clearInterval(thirdTimerId)
     }
 
   }
@@ -191,7 +206,12 @@ function init() {
         removeFrog(currentPosition)
         currentPosition = startPosition
         addFrog(startPosition)
+        winSound.play()
+        audio.pause()
         window.alert('You Win')
+        clearInterval(timerId)
+        clearInterval(secondTimerId)
+        clearInterval(thirdTimerId)
         
       }
     }
@@ -204,11 +224,7 @@ function init() {
 
 
   }
-  // function moveAll() {
-  //   setInterval(replaceMario2, 1000)
-  //   setInterval(replaceMario, 100)
   
-  // }
   startButton.addEventListener('click',  () => {
     if (timerId) {
       clearInterval(timerId)
@@ -219,12 +235,14 @@ function init() {
       secondTimerId = null
       thirdTimerId = null
       outcomeTimerId = null
+      audio.pause()
       document.removeEventListener('keyup', handleKeyDown)
     } else {
       timerId = setInterval(replaceMario2, 1000)
       secondTimerId = setInterval(replaceMario, 200)
       thirdTimerId = setInterval(replaceMario3,500)
       outcomeTimerId = setInterval(outComes, 100)
+      audio.play()
       document.addEventListener('keyup', handleKeyDown)
 
     }

@@ -7,31 +7,39 @@
     <script src="scripts/app.js"charset="utf-8"></script>
   </head>
   <body>
-    <header id="header">Frog vs Mario</header>
+    <header id="header"><h1>Frog vs Mario</h1></header>
+    <h2>
+    <div class="lives-display">
+      Lives Remaing: 6
+    </div>
+  </h2>
+
+    <section class="flex box">
     
     <div class="grid-wrapper">
-      <!-- Grid container -->
-      <div id="grid">
-
-
-    
-        <!-- Grid items will go here -->
+   
+        <div id="grid">
       </div>
     </div>
-    <section >
-     
-        
-        
-        <div class="button-container">
-          <button id="start">Start/Pause</button>
+     <div class="description">
+          <h3>Help the little frog go home, and the frog has six lives.use ⬆️ ⬇️ ⬅️ ➡️ to lead his way home. The game's object is to direct the frog to his home by crossing a busy road and navigating a river full of hazards. </h3>
+           <div class="buttoncontain"> <button id="start"> Start/Pause </button></div>
         </div>
-        
+      </section>
 
-
-
-
-
-    </section>
+           
+          
+    
+    <audio id="backgroundSong">
+      <source src="https://vgmsite.com/soundtracks/frogger-psx-gamerip/jeudfpzrjf/02%20Opening.mp3">
+  </audio>
+ <audio id="win">
+  <source src="https://vgmsite.com/soundtracks/mario-kart-64/mxvwssletw/14.%20Finish%20Line%202.mp3">
+</audio>
+<audio id="gameOver">
+  <source src="https://vgmsite.com/soundtracks/frogger-psx-gamerip/zeslpfxxyq/32%20Game%20Over.mp3">
+</audio>
+   
 
   </body>
 </html>

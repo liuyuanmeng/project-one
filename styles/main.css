@@ -1,12 +1,8 @@
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  
-}
+ }
 
 body {
-  
   background-image: url('https://giffiles.alphacoders.com/118/11865.gif');
   background-size: cover;
   background-repeat: no-repeat;
@@ -18,48 +14,75 @@ header{
   font-size: x-large;
   
 }
+h2{
+  text-align: center;
+  margin-top: 10px;
+
+
+}
 .grid-wrapper {
-  height: 90vh;
+  
     display: flex;
     justify-content: center;
 }
+
 
 #grid {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-  height: 100%;
   justify-content: center;
   height: 650px;
   width: 750px;
   margin: 50px;
-  background-color: green;
+  background-color: rgb(9, 26, 9);
   
 }
 #grid div {
-  border: 1px solid lightgrey;
-  flex-grow: 1;
-  height: 10%;
+  height: 10%; 
   width: 10%;
+  
+} 
+
+.discription{
+  width: 200px;
+  margin-top: 20px;
+  height: 200px;
+  width: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 10px 0 rgb(253, 229, 213);
+  border-radius: 20px;
+  margin-top: 250px;
+}
+
+
+
+button {
+width: 200px;
+height: 65px;
+background-color: hsl(95, 89%, 93%);
+border: none;
+margin-top: 25px;
+margin-bottom: 25px;
+box-shadow: 0 0 20px 0 rgb(197, 234, 248);
+border-radius: 20px;
+font-family: 'Orbitron', sans-serif;
+font-size: 25px;
+color:hsl(198, 64%, 33%);
+outline: 0 none;
+margin-left: 450px;
 }
 
 #grid div.frog{
-  background-image: url('https://media2.giphy.com/media/l0Iym8uibS5p0AJdC/200w.webp?cid=ecf05e477s4me64q55nmsgdlvfurjcjxjun1ek1cmn30c4p0&rid=200w.webp&ct=g');
+  background-image: url('https://media0.giphy.com/media/l0Iym8uibS5p0AJdC/giphy.gif?cid=ecf05e473t4gll0cil0utmv4wwddw51r5sj8jvkwr0s8x1t0&rid=giphy.gif&ct=g'); 
   background-repeat: no-repeat;
   background-size: contain;
   
 }
 
-  section{
-    width: 100px;
-    border: 10px solid purple;
-    border-radius: 10px;
-    text-align: center;
-    background-color: white;
-    margin-bottom: 100px;
 
-
-}
 .obstacles {
   background-image: url('https://static.wikia.nocookie.net/spongefan/images/4/4f/Banana.gif/revision/latest?cb=20171230044832');
   background-repeat: no-repeat;
@@ -74,11 +97,10 @@ header{
   background-repeat: no-repeat;
   background-size: contain;
   background-size: cover;
- 
 
 }
 .road{
-  /* background-image: url('https://media1.giphy.com/media/vbGLQXbaOoi2WXBNaF/giphy.gif'); */
+  /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBI-L6UGdM68XzCQhxZ_BUOWAT_ugNmeH_X0iQFswvJ2era4plILJrr0SqzZszaeq-jmw&usqp=CAU'); */
   background-repeat: no-repeat;
   background-size: contain;
   background-size: cover;
@@ -99,8 +121,18 @@ header{
   background-size: cover;
 
 }
+.water{
+  background-image: url('https://cdn.edu.buncee.com/rackspace/bnc-assets/animations/e5a/1436476835-Young_animation_seasons070915_02.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
+}
 
 .finishLine{
+  background-image: url('https://i.pinimg.com/originals/3e/77/de/3e77de6ecd40acd2fecb339bf747d8e2.gif');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
 
 
 }
