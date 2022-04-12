@@ -26,6 +26,9 @@ function init() {
     }
     addFrog(startPosition)
   }
+
+ 
+
   //  Character setup
   const frogClass = 'frog' 
   const startPosition = 75   
@@ -37,6 +40,7 @@ function init() {
   function removeFrog(position){
     cells[position].classList.remove(frogClass)
   }
+ 
 
   // Movement function
   function handleKeyDown(event){
@@ -50,16 +54,16 @@ function init() {
 
 
     // console.log(currentPosition % width)
-    if (key === left && currentPosition % width !== 0){
-      // console.log('MOVED LEFT')
+    if (key === left && currentPosition % width !== 0 && !(cells[currentPosition - 1].classList.contains('obstacles')) ){
+      //console.log('MOVED LEFT')
       currentPosition-- // decrement currentPosition by 1 to move character left
-    } else if (key === right && currentPosition % width !== width - 1){
+    } else if (key === right && currentPosition % width !== width - 1 && !(cells[currentPosition + 1].classList.contains('obstacles'))){
       // console.log('MOVED RIGHT')
       currentPosition++ // increment the currentPosition by 1 to move character right
-    } else if (key === up && currentPosition >= width){
+    } else if (key === up && currentPosition >= width && !(cells[currentPosition - width].classList.contains('obstacles'))){
       // console.log('MOVED UP')
       currentPosition -= width
-    } else if (key === down && currentPosition + width < cellCount){
+    } else if (key === down && currentPosition + width < cellCount && !(cells[currentPosition + width].classList.contains('obstacles'))){
       // console.log('MOVED DOWN')
       currentPosition += width
     } else {
@@ -82,6 +86,18 @@ function init() {
   // Initial setup
  
   createGrid()
+
+  // obstacles  setup
+  cells[40].classList.add('obstacles')
+  cells[44].classList.add('obstacles')
+  cells[45].classList.add('obstacles')
+  cells[49].classList.add('obstacles')
+  cells[22].classList.add('obstacles')
+  cells[27].classList.add('obstacles')
+
+
+
+
 
 
   // creat mario

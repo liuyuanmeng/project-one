@@ -14,7 +14,8 @@ body {
 }
 header{
   text-align: center;
-  margin-top: 20px;
+  margin-top: 50px;
+  font-size: x-large;
   
 }
 .grid-wrapper {
@@ -59,7 +60,14 @@ header{
 
 
 }
+.obstacles {
+  background-image: url('https://static.wikia.nocookie.net/spongefan/images/4/4f/Banana.gif/revision/latest?cb=20171230044832');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-size: cover;
 
+
+}
 
 .mario {
   background-image: url('https://media4.giphy.com/media/QW9Oe9EY1o2zE649Cc/giphy.gif?cid=ecf05e47mvgg3s5n87z2738d84boeoba08cglbg2u06887av&rid=giphy.gif&ct=g');
