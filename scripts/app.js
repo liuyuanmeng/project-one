@@ -3,7 +3,12 @@ function init() {
   const grid = document.querySelector('#grid')
   const startButton = document.querySelector('#start')
   const audio = document.querySelector('#backgroundSong')
-  //  const livesDisplay = document.querySelector('#lives-display')
+  const livesDisplay = document.querySelector('.lives-display')
+  const modal = document.querySelector('#myModal')
+  const modal2 = document.querySelector('#myModal2')
+  
+  console.log(modal)
+  const spansClose = document.querySelectorAll('.close')
  
   const winSound = document.querySelector('#win')
   const gameOver = document.querySelector('#gameOver')
@@ -12,7 +17,7 @@ function init() {
   let secondTimerId
   let thirdTimerId
   let outcomeTimerId
-  //  let livesRemaining = 6 
+  let lives = 6 
   
   // Grid cretion
   const width = 10
@@ -120,7 +125,6 @@ function init() {
   function replaceMario(){
     const fromMario = findMario() 
     const goMarioIndex = fromMario.map(cell => Number(cell.id) < 19 ? Number(cell.id) + 1 : 10)
-    console.log(goMarioIndex)
     fromMario.forEach(cell => cell.classList.remove('mario'))
     fromMario.forEach(cell => cell.classList.add('road'))
     goMarioIndex.forEach(id => cells[id].classList.remove('road'))
@@ -163,7 +167,6 @@ function init() {
   function replaceMario3() {
     const fromMario = findMario3()
     const goMarioIndex = fromMario.map(cell => Number(cell.id) > 30 ? Number(cell.id) - 1 : 39)
-    console.log(goMarioIndex)
     fromMario.forEach(cell => cell.classList.remove('mario3'))
     fromMario.forEach(cell => cell.classList.add('road'))
     goMarioIndex.forEach(id => cells[id].classList.remove('road'))
@@ -174,25 +177,28 @@ function init() {
   
 
   function loseLife() {
-    console.log(cells[currentPosition])
     if (cells[currentPosition].classList.contains('frog') && (cells[currentPosition].classList.contains('mario') || cells[currentPosition].classList.contains('mario2') || cells[currentPosition].classList.contains('mario3') || cells[currentPosition].classList.contains('water')) ) {
-      
-      
-      
       removeFrog(currentPosition)
       currentPosition = startPosition
       addFrog(startPosition)
        
-      //  livesRemaining-- 
-      // livesDisplay.innerHTML = livesRemaining
-      //should stop the music when frog hit mario 
-      audio.pause()
-      gameOver.play()
-      window.alert('Game Over')
-      clearInterval(timerId)
-      clearInterval(secondTimerId)
-      clearInterval(thirdTimerId)
-    }
+      lives-- 
+      livesDisplay.innerHTML = 'Lives Remaining:' + ' ' + lives
+      if (lives === 0){
+        audio.pause()
+        gameOver.play()
+        modal.style.display = 'block'
+        lives = 6
+        livesDisplay.innerHTML = 'Lives Remaining:' + ' ' + lives
+        document.removeEventListener('keyup', handleKeyDown)
+        
+      
+        clearInterval(timerId)
+        clearInterval(secondTimerId)
+        clearInterval(thirdTimerId)
+        
+      } 
+    }  
 
   }
 
@@ -208,7 +214,10 @@ function init() {
         addFrog(startPosition)
         winSound.play()
         audio.pause()
-        window.alert('You Win')
+        modal2.style.display = 'block'
+        document.removeEventListener('keyup', handleKeyDown)
+      
+       
         clearInterval(timerId)
         clearInterval(secondTimerId)
         clearInterval(thirdTimerId)
@@ -217,6 +226,12 @@ function init() {
     }
 
   }
+
+  spansClose.forEach(span => span.addEventListener('click', () => modal.style.display = 'none'))
+  spansClose.forEach(span => span.addEventListener('click', () => modal2.style.display = 'none'))
+
+
+ 
 
   function outComes() { 
     win()
