@@ -215,6 +215,7 @@ function init() {
         winSound.play()
         audio.pause()
         modal2.style.display = 'block'
+        
         document.removeEventListener('keyup', handleKeyDown)
       
        
@@ -258,6 +259,8 @@ function init() {
       thirdTimerId = setInterval(replaceMario3,500)
       outcomeTimerId = setInterval(outComes, 100)
       audio.play()
+      lives = 6
+      livesDisplay.innerHTML = 'Lives Remaining:' + ' ' + lives
       document.addEventListener('keyup', handleKeyDown)
 
     }
