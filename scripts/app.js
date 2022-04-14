@@ -1,5 +1,5 @@
 function init() {
-  // Elements
+  
   const grid = document.querySelector('#grid')
   const startButton = document.querySelector('#start')
   const audio = document.querySelector('#backgroundSong')
@@ -46,20 +46,14 @@ function init() {
   function removeFrog(position){
     cells[position].classList.remove(frogClass)
   }
- 
-
-  // Movement function
   function handleKeyDown(event){
     const key = event.keyCode
     const left = 37 
     const right = 39
     const up = 38
     const down = 40
-    // Remove frog whilst currentPosition matches the old frog position
+    
     removeFrog(currentPosition)
-
-
-   
     if (key === left && currentPosition % width !== 0 && !(cells[currentPosition - 1].classList.contains('obstacles')) ){
     
       currentPosition--
@@ -84,13 +78,6 @@ function init() {
  
   // Initial setup
   createGrid()
-
-  //all sounds effect 
-
-  
-  
-
-
   // obstacles  setup
   cells[40].classList.add('obstacles')
   cells[44].classList.add('obstacles')
@@ -109,10 +96,7 @@ function init() {
   cells[57].classList.add('water')
   cells[58].classList.add('water')
 
-
-  
-
-  // creat mario
+  // create mario
   cells[10].classList.add('mario')
 
   for (let i = 11; i < 20; i++) {
@@ -130,7 +114,7 @@ function init() {
     goMarioIndex.forEach(id => cells[id].classList.remove('road'))
     goMarioIndex.forEach(id => cells[id].classList.add('mario'))
   }
-  //creat mario2
+  //create mario2
 
 
   cells[61].classList.add('mario2')
@@ -153,7 +137,7 @@ function init() {
     goMarioIndex.forEach(id => cells[id].classList.add('mario2'))
   }
 
-  // creat mario3
+  // create mario3
   cells[31].classList.add('mario3')
   cells[35].classList.add('mario3')
   cells[38].classList.add('mario3')
@@ -178,10 +162,11 @@ function init() {
 
   function loseLife() {
     if (cells[currentPosition].classList.contains('frog') && (cells[currentPosition].classList.contains('mario') || cells[currentPosition].classList.contains('mario2') || cells[currentPosition].classList.contains('mario3') || cells[currentPosition].classList.contains('water')) ) {
+      
       removeFrog(currentPosition)
       currentPosition = startPosition
       addFrog(startPosition)
-       
+      
       lives-- 
       livesDisplay.innerHTML = 'Lives Remaining:' + ' ' + lives
       if (lives === 0){
@@ -265,20 +250,6 @@ function init() {
 
     }
   })
-
-  
-
-  
-  
- 
-
-  
- 
-  
-  
-
-
-
 }
 
 window.addEventListener('DOMContentLoaded', init)
