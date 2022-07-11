@@ -35,15 +35,17 @@ Day 2 - Create a grid + Set obstacles.
 Added frog to a starting position and used a keyUp EventListener to move around. Added Marios to the grid. Used setInterval to move Mario at different speeds. 
 
 Day 3 - Win /  Lose Functions + Start / Pause Button eventListener.
+
 Day 4 - Added static obstacles + Added checkOutcomes function.
+
 Day 5 - Sound effects + Modal Boxes + update button.eventListener + final CSS polish.
 
 ## Screenshot Walkthrough
 * Main game page
 <img width="600" alt="Screenshot 2022-07-05 at 13 12 45" src="https://user-images.githubusercontent.com/100864042/177324616-0f245c07-9ed5-4f5d-b162-bff0a1d371eb.png">
-* Moving obstacles
+*  Moving obstacles
 <img width="600" alt="Screenshot 2022-07-05 at 13 13 09" src="https://user-images.githubusercontent.com/100864042/177324679-2f73c02f-a426-4adf-90fc-f337adff2539.png">
-*  Model box pop up for result 
+*   Model box pop up for result 
 <img width="600" alt="Screenshot 2022-07-05 at 13 14 45" src="https://user-images.githubusercontent.com/100864042/177324940-a0f913e8-dbaa-4f31-abb8-51a157e297cb.png">
 
 ## Featured Code
