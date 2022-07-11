@@ -2,7 +2,7 @@
 
                                     Project One - Frog vs Mario
 ## Overview
-This was the first project for the Software Engineering Immersive course and also my first ever project using JavaScript. We were given a timeline of one week to deliver the final product. Frog vs Mario is a grid-based game modelled on the 1981 arcade action game Frogger. The players must avoid falling into the water and getting hit by the obstacles to win. In Frog vs Mario, players have six lives to reach the finish line. 
+This was the first solo project for the Software Engineering Immersive course and also my first ever project using JavaScript. We were given a timeline of one week to deliver the final product. Frog vs Mario is a grid-based game modelled on the 1981 arcade action game Frogger. The players must avoid falling into the water and getting hit by the obstacles to win. In Frog vs Mario, players have six lives to reach the finish line. 
 
 Link to the game
 https://liuyuanmeng.github.io/project-one/
@@ -47,6 +47,7 @@ Day 5 - Sound effects + Modal Boxes + update button.eventListener + final CSS po
 * Moving obstacles
 
 <img width="600" alt="Screenshot 2022-07-05 at 13 13 09" src="https://user-images.githubusercontent.com/100864042/177324679-2f73c02f-a426-4adf-90fc-f337adff2539.png">
+
 * Results display
 
 <img width="600" alt="Screenshot 2022-07-05 at 13 14 45" src="https://user-images.githubusercontent.com/100864042/177324940-a0f913e8-dbaa-4f31-abb8-51a157e297cb.png">
