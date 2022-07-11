@@ -34,9 +34,9 @@ Collecting thoughts and methods that will be used for this project.
 Day 2 - Create a grid + Set obstacles.
 Added frog to a starting position and used a keyUp EventListener to move around. Added Marios to the grid. Used setInterval to move Mario at different speeds. 
 
-Day 3 - Win /  Lose Functions + Start / Pause Button eventListener
-Day 4 - Added static obstacles + Added checkOutcomes function
-Day 5 - Sound effects + Modal Boxes + update button.eventListener + final CSS polish
+Day 3 - Win /  Lose Functions + Start / Pause Button eventListener.
+Day 4 - Added static obstacles + Added checkOutcomes function.
+Day 5 - Sound effects + Modal Boxes + update button.eventListener + final CSS polish.
 
 ## Screenshot Walkthrough
 * Main game page
@@ -126,9 +126,11 @@ function replaceMario3() {
 * How to use play and pause functions to control the audio (loop background music)
 * SetInterval method
 
-## Challenges:
+## Wins:
 
-Create moving obstacles running smoothly in the grid.
+* Create moving obstacles running smoothly in the grid.
+* Game fully functioning.
+
 
 ## Future Improvements:
 * Set multiple characters.
