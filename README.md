@@ -131,6 +131,12 @@ function replaceMario3() {
 * How to create the modal box.
 * How to use play and pause functions to control the audio (loop background music)
 * SetInterval method
+* Importance of planning and pseudocode
+
+## Challenges 
+* The biggest challenge of this project was handling three Marios moving across the grid. 
+
+
 
 ## Wins:
 
