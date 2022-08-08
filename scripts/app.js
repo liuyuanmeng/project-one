@@ -28,6 +28,7 @@ function init() {
   function createGrid(){
     for (let i = 0; i < cellCount; i++){
       const cell = document.createElement('div')
+//       Add cell index as data-index attribute
       cell.id = i
       grid.appendChild(cell)
       cells.push(cell)
