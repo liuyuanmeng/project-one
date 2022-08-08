@@ -18,7 +18,7 @@ https://liuyuanmeng.github.io/project-one/
 
 ## JavaScript
 The JavaScript is sectioned out as follows:
-* createGrid function for creating the starting grid
+* CreateGrid function for creating the starting grid
 * KeyUp event listener to move the frog character 
 * Create obstacles
 * Lose and Win functions - update lives, clearInterval and Audio effects
@@ -126,12 +126,12 @@ function replaceMario3() {
 ```
 
 ## Key Learnings:
-* How to create the grid and set non-moving obstacles in the grid.
-* Control flow 
-* How to create the modal box.
-* How to use play and pause functions to control the audio (loop background music)
-* SetInterval method
-* Importance of planning and pseudocode
+* Learned how to create the grid and set non-moving obstacles in the grid.
+* Learned Control flow 
+* Learned how to create the modal box.
+* Learned how to use play and pause functions to control the audio (loop background music)
+* Learned SetInterval method
+* Learned importance of planning and pseudocode
 
 ## Challenges 
 * The biggest challenge of this project was handling three Marios moving across the grid. 
