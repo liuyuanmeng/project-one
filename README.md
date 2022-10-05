@@ -151,10 +151,22 @@ function replaceMario3() {
 * Rewrite functions with arguments to reduce the amount of code (see below).
 
  ```
-function findMario (rowNumber, marioClass) {
-  return cells.slice((rowNumber-1)*width, rowNumber*width).filter(cell => cell.classList.contains(marioClass))
+function findAndReplaceMario(marioClass, rowNumber, direction) {
+	const fromMario = cells.slice((rowNumber-1)*width, rowNumber*width).filter(cell => cell.classList.contains(marioClass))
+	if (direction == 'left') {
+		const goMarioIndex = fromMario.map(cell => Number(cell.id) > (rowNumber-1)*width ? Number(cell.id) - 1 : rowNumber*width - 1)
+	}
+	else {
+		const goMarioIndex = fromMario.map(cell => Number(cell.id) < rowNumber*width - 1 ? Number(cell.id) - 1 : (rowNumber-1)*width)
+	}
+	fromMario.forEach(cell => cell.classList.remove(marioClass))
+    fromMario.forEach(cell => cell.classList.add('road'))
+    goMarioIndex.forEach(id => cells[id].classList.remove('road'))
+    goMarioIndex.forEach(id => cells[id].classList.add(marioClass))
 }
 
-findMario(4, 'mario3')
+
+findAndReplaceMario('mario3', 4, 'left')
+findAndReplaceMario('mario2', 7, 'right')
 ```
 
